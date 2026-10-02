@@ -1,0 +1,21 @@
+# Personal materials at any depth; no exceptions.
+**/private/
+**/.env
+**/.env.*
+**/*credentials*.json
+**/*cookies*.json
+**/*api-key*
+**/*secret*.txt
+
+# Obsidian writes personal state here. Only the reviewed style ships.
+**/.obsidian/*
+!/.obsidian/snippets/
+/.obsidian/snippets/*
+!/.obsidian/snippets/career-workspace.css
+
+.DS_Store
+**/__pycache__/
+**/*.py[cod]
+**/.venv/
+**/node_modules/
+**/.pytest_cache/

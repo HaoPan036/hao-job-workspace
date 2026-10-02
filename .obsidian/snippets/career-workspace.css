@@ -1,0 +1,9 @@
+/* Optional: keep Agent instructions and developer tools out of the note list. */
+.nav-folder-title[data-path=".agents"],
+.nav-folder:has(> .nav-folder-title[data-path=".agents"]),
+.nav-folder-title[data-path="tools"],
+.nav-folder:has(> .nav-folder-title[data-path="tools"]),
+.nav-file-title[data-path="AGENTS.md"],
+.nav-file:has(> .nav-file-title[data-path="AGENTS.md"]) {
+  display: none !important;
+}
