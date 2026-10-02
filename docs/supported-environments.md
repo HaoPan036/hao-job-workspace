@@ -4,13 +4,24 @@
 
 | 组成 | 当前范围 | 验证边界 |
 | --- | --- | --- |
-| Obsidian + Codex 桌面 / macOS | 共享本地目录，Markdown 资料与中英文材料 | 私人环境已使用；新用户应用界面冷启动尚未验收 |
+| Obsidian + Codex 桌面 / macOS | 共享本地目录，Markdown 资料与中英文材料 | 已做下述干净克隆检查；首次安装、新账号与陌生用户尚未验收 |
 | hao-job-workspace Skill | 事实核对、简历文字、面试准备/复盘/陪练 | 独立副本 Agent 演练通过；不等于陌生用户验收 |
 | Python 与 Git | 运行公开副本检查器 | Python 3.10+，标准库；维护环境为 3.11.14，不代表全部版本实测 |
 | 网页填表 | 后续迁移，依赖桌面浏览器能力 | 当前包不含此流程 |
 | CLI、IDE、其他系统 | 可能使用文件与 Skill 能力 | 项目路线未验收；官方内置浏览器不在 CLI/IDE 中提供 |
 
 此前私人岗位流程主要用于中国与新加坡；同步代码的地区、实习与台账假设尚待阶段 3 参数化，不宣称全球投递支持。中文和英文材料已有流程，语言不能与岗位地区混为一谈。
+
+## 最近一次维护者检查
+
+2026-10-02，在提交 `cbeafe1` 的全新本地 Git 克隆中检查，未复制私人资料或原资料库配置。使用 macOS 15.7.3、Obsidian 1.13.7、Python 3.11.14、Git 2.39.5：
+
+- README 的本地检查输出 `repo-check: view=worktree errors=0 warnings=0`。默认 `python3` 是旧版本时，按文档改用已安装的 `python3.11`。
+- 复制虚构索引后，`git check-ignore` 命中 `**/private/`；重复复制没有覆盖已有索引。
+- 在 Obsidian 打开 README、切换阅读视图并跳转到贯通练习。实际生成的 `.obsidian/app.json`、`appearance.json`、`core-plugins.json`、`workspace.json` 均被忽略，操作后 `git status --short --untracked-files=all` 无输出。
+- 独立 Agent 仅使用克隆中的公开资料与 Skill，生成了中英文简历和面试回答；职责限定为补充停止条件和测试，没有加入性能提升、Kubernetes 或生产部署经历。
+
+这是已安装软件、已有宿主账号下的维护者与 Agent 检查，未覆盖软件首次安装、全新账号、陌生用户或其他操作系统。仓库检查通过也不代表简历事实正确。
 
 ## 安装与账号
 
