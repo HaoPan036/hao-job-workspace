@@ -1,6 +1,6 @@
 # Hao Job Workspace
 
-This package provides a local career workspace. Use [hao-job-workspace](.agents/skills/hao-job-workspace/SKILL.md) for job discovery, project facts, resumes, explicitly authorized applications, proven-result tracking, and interview preparation. Maintenance and ordinary questions do not activate those operations.
+This package provides a local career workspace. Use [hao-job-workspace](.agents/skills/hao-job-workspace/SKILL.md) for job discovery, project facts, application materials, explicitly authorized applications, recruiting priorities and outcomes, and interview preparation. Maintenance and ordinary questions do not activate those operations.
 
 - Maintain the release project in this standalone repository. A user's personal career workspace remains independent; do not copy release changes back there or change its Git remote or visibility.
 - Follow the user's requested language and task. Ask for missing source locations; do not assume a particular person's region, resume, employer, directory or authorization.

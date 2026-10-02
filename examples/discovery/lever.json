@@ -1,0 +1,18 @@
+[
+  {
+    "id": "LEVER-301",
+    "text": "Platform Engineer",
+    "categories": {
+      "location": "Toronto, Canada",
+      "commitment": "Full-time"
+    },
+    "hostedUrl": "https://careers.example.test/jobs/LEVER-301",
+    "descriptionPlain": "Build reliable internal platform services.",
+    "lists": [
+      {
+        "text": "Requirements",
+        "content": "Required: Python, SQL and careful testing."
+      }
+    ]
+  }
+]

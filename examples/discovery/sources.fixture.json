@@ -1,0 +1,103 @@
+{
+  "sources": [
+    {
+      "name": "Fictional HTML Careers",
+      "type": "html",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional html Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "careers.html",
+      "detail_fixtures": {
+        "https://careers.example.test/jobs/HTML-101": "detail.html"
+      }
+    },
+    {
+      "name": "Fictional RSS",
+      "type": "rss",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional rss Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "jobs.rss"
+    },
+    {
+      "name": "Fictional Atom",
+      "type": "rss",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional rss Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "jobs.atom"
+    },
+    {
+      "name": "Fictional Ashby",
+      "type": "ashby",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional ashby Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "ashby.json"
+    },
+    {
+      "name": "Fictional Greenhouse",
+      "type": "greenhouse",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional greenhouse Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "greenhouse.json"
+    },
+    {
+      "name": "Fictional Lever",
+      "type": "lever",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional lever Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "lever.json"
+    },
+    {
+      "name": "Fictional MCF",
+      "type": "mycareersfuture",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional mycareersfuture Co.",
+      "location": "Singapore",
+      "employment_type": "Internship",
+      "fixture_path": "mcf.json"
+    },
+    {
+      "name": "Fictional Baidu payload",
+      "type": "baidu_campus",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional baidu_campus Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "baidu.html"
+    },
+    {
+      "name": "Fictional WeChat payload",
+      "type": "wechat_search",
+      "url": "https://careers.example.test/careers",
+      "company": "Fictional wechat_search Co.",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "fixture_path": "wechat.html",
+      "query": "虚构云公司 招聘"
+    },
+    {
+      "name": "Fictional programme portal",
+      "type": "portal",
+      "url": "https://careers.example.test/programme",
+      "title": "Fictional Graduate Programme",
+      "company": "Fictional Portal Co.",
+      "location": "Example City"
+    },
+    {
+      "name": "Manual channel",
+      "type": "manual",
+      "url": "https://manual.example.test",
+      "enabled": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "id": "ASHBY-101",
+      "title": "Backend Engineer",
+      "location": "Toronto, Canada",
+      "employmentType": "FullTime",
+      "jobUrl": "https://careers.example.test/jobs/ASHBY-101",
+      "applyUrl": "https://careers.example.test/jobs/ASHBY-101/application",
+      "descriptionHtml": "<p>Responsibilities: Build reliable data services and maintain documented application interfaces with the team.</p><p>Required: Python, SQL, clear documentation and careful testing of production software.</p><p>Preferred: Experience with event-driven services.</p>"
+    },
+    {
+      "id": "ASHBY-102",
+      "title": "Backend Engineer",
+      "location": "Toronto, Canada",
+      "employmentType": "FullTime",
+      "jobUrl": "https://careers.example.test/jobs/ASHBY-102",
+      "applyUrl": "https://careers.example.test/jobs/ASHBY-102/application",
+      "descriptionHtml": "<p>Responsibilities: Build reliable data services and maintain documented application interfaces with the team.</p><p>Required: Python, SQL, clear documentation and careful testing of production software.</p><p>Preferred: Experience with event-driven services.</p>"
+    }
+  ]
+}

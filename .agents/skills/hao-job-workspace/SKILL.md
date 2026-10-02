@@ -1,6 +1,6 @@
 ---
 name: hao-job-workspace
-description: "Find and evaluate jobs, prepare evidence-backed resumes and interview materials, fill an explicitly authorized job application, arrange independent review and submission, and reconcile proven results with local records and archived materials. Also use for claim verification, answer review and interview practice. Not for general knowledge-base maintenance or unrequested applications."
+description: "Find and evaluate jobs, prepare evidence-backed resumes, cover letters, form answers and interview materials, fill an explicitly authorized job application, arrange independent review and submission, and reconcile proven results with local records and archived materials. Also use for daily recruiting priorities, assessments, interviews, rejections, offers, claim verification and interview practice. Not for general knowledge-base maintenance or unrequested applications."
 ---
 
 # Hao Job Workspace
@@ -17,10 +17,13 @@ description: "Find and evaluate jobs, prepare evidence-backed resumes and interv
 |---|---|
 | 找岗位、核对申请条件、评价一个 JD | [找岗位](references/discovery.md)：核对官方来源、去重；按用户是否要求保存决定写回 |
 | 核对具体经历、数字、职责或实现 | [事实规则](references/evidence.md)：返回有依据的表述、来源和未解决项 |
-| 简历润色、按 JD 改写或材料审阅 | [简历](references/resume.md)：修改指定内容，另列事实引用与差异 |
+| 简历润色、求职信、申请问答、HR 开场白 | [申请材料](references/resume.md)：选择已有版本，按实际问题修改文字，另列事实引用与差异；不因此发送或填表 |
 | 填写或投递一个明确岗位 | [投递](references/application.md)：材料检查、填写与上传、独立审查、一次提交、结果核对 |
 | 记录已证实的投递、统计数量、找回投递版本 | [记录与归档](references/records.md)：同步历史和待办、核对计数、归档实际材料 |
+| 今天做什么、截止事项、测评、面试、拒信、Offer | [求职进度](references/operations.md)：核对新事件，按授权更新已有记录与行动，不另建一套台账 |
 | 面试稿、岗位准备、已有回答复盘、互动练习 | [面试](references/interview.md)：按写作、复盘或陪练完成当前阶段 |
+
+完整仓库首次建立本地资料时可运行 `python3 tools/workspace/setup.py init`，只补齐缺失模板；随后 `check` 检查结构。先读该工具说明，不把空档案检查通过当作事实核实或投递授权。只安装 Skill 时沿用用户现有资料，不假定仓库工具存在。
 
 ## 独立使用时也必须保留的边界
 

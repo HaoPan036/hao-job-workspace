@@ -1,6 +1,6 @@
 # 来源、许可与对比依据
 
-本仓库的工作流、事实卡约定、模板、repo-check、application-profile、application-record、recruiting-sync，以及 job-radar 的去重和受控保存部分，从维护者自有的求职工作流抽取并去个人化；示例和本地模拟网站是新写的虚构验证夹具。同步工具的地区、路径和表头改为配置，岗位发现没有包含原有全部抓取器、数据库或 changedetection 服务。公开版本不包含原私人仓库历史、真实简历、公司材料或原始面试记录。
+本仓库的工作流、事实卡约定、材料与求职运营模板、repo-check、application-profile、application-record、recruiting-sync，以及 job-radar 的前台采集、解析、已见岗位记录、来源健康、报告、去重、受控保存和漏斗摘要，从维护者自有的求职工作流抽取并去个人化。可选 changedetection 桥接与 macOS 安装器同样迁自既有实现，改为显式配置与执行；本包不分发第三方 changedetection.io 服务。示例、本地模拟网站与模板初始化入口是新写的配套内容。地区、路径、表头、采集来源及求职条件均改为配置。公开版本不包含原私人仓库历史、真实简历、公司材料或原始面试记录。
 
 [LICENSE](../LICENSE) 为完整 MIT 文本，版权声明为 `Copyright (c) 2026 Hao Job Workspace contributors`。它覆盖本仓库原创内容，不重新授权用户资料、招聘网站内容或下面链接到的项目与官方文档。
 

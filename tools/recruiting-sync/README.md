@@ -22,6 +22,14 @@ python3 tools/recruiting-sync/sync.py audit
 
 初始输出应为 `AUDIT_PASS history_rows=0`。
 
+需要查看分类投递数时使用只读 JSON 输出：
+
+```sh
+python3 tools/recruiting-sync/sync.py audit --json
+```
+
+输出包含 `history_rows`、`counts` 和 `issues`。`counts` 沿用配置中的地区与全职/实习分类，不是测评、面试或 Offer 数。正常退出 0；发现分类、计数或队列问题时仍输出 JSON、退出 1。未能分类的历史行不计入任何分类，所以 `issues` 非空时不能把 `counts` 当作完整统计。配置、读取或表格结构错误仍通过 stderr 报错并退出 1，不输出成功 JSON。省略 `--json` 保持原来的文本输出。两种模式均不修改配置、台账或行动页。
+
 配置使用 JSON，`schema_version` 为 `1`。`regions` 必填；`paths` 和 `markdown` 可省略以使用模板默认值：
 
 - `paths.history`、`paths.queue`：仓库内相对路径，默认指向 `private/recruiting/`。
@@ -83,6 +91,8 @@ python3 tools/recruiting-sync/sync.py audit
 ## Markdown 契约
 
 历史表按固定含义使用八列：确认日、实际投递日、公司、岗位、地区与性质、当前状态、官方链接、备注。工具不重排历史，不改已有申请的日期、状态或说明。
+
+测评、面试、拒绝与 Offer 等后续变化由 Agent 按 [运营规则](../../.agents/skills/hao-job-workspace/references/operations.md)更新准确行的状态与备注，并维护关联行动页；本工具不接收阶段事件，也不替用户作决定。保存后可用 `audit --json` 核对分类数量和格式，阶段含义及证据仍需 Agent 检查。
 
 待投条目沿用现有格式：
 

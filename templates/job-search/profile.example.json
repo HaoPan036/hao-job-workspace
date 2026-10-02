@@ -17,5 +17,40 @@
   },
   "company_coverage": "company-coverage.md",
   "current_actions": "current-actions.md",
-  "dashboard": "dashboard.md"
+  "dashboard": "dashboard.md",
+  "must_include_any": [],
+  "preferred_keywords": [],
+  "fresh_grad_keywords": [],
+  "negative_keywords": [],
+  "non_target_locations": [],
+  "generic_link_titles": [],
+  "blocked_keywords": [],
+  "internship_keywords": [],
+  "detail_sections": {
+    "jd_headings": [
+      "Responsibilities",
+      "What you will do",
+      "工作职责"
+    ],
+    "requirements_headings": [
+      "Requirements",
+      "Qualifications",
+      "任职要求"
+    ],
+    "stop_headings": [
+      "Benefits",
+      "About the company",
+      "福利"
+    ]
+  },
+  "collector": {
+    "database_path": "radar/seen_jobs.sqlite3",
+    "source_health_path": "radar/source_health.json",
+    "reports_dir": "radar/reports",
+    "dossiers_path": "radar/dossiers.json",
+    "timeout_seconds": 20,
+    "max_details": 20,
+    "detail_minimum_score": 0,
+    "report_minimum_score": 0
+  }
 }

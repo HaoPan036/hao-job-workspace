@@ -505,6 +505,53 @@ class SyncTests(unittest.TestCase):
         self.write_history(self.row(nature="Singapore / Contract"), {"Singapore / Internship": 1})
         self.assertIn("unclassified", self.audit()["issues"][0])
 
+    def test_audit_cli_json_reports_classified_counts_without_writing(self):
+        rows = self.row() + self.row(company="Fictional Boreal Systems", role="Engineer", job_id="DEMO-CA-002", nature="Canada / Full time")
+        self.write_history(rows, {"Singapore / Internship": 1, "Canada / Full time": 1})
+        before = self.snapshot()
+        private_before = sorted(str(path.relative_to(self.root)) for path in (self.root / "private").rglob("*"))
+        command = [sys.executable, str(SCRIPT), "audit", "--root", str(self.root)]
+        result = subprocess.run(command + ["--json"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout), {
+            "history_rows": 2,
+            "counts": {"Singapore / Full time": 0, "Singapore / Internship": 1, "Canada / Full time": 1, "Canada / Internship": 0},
+            "issues": [],
+        })
+        default = subprocess.run(command, capture_output=True, text=True)
+        self.assertEqual(default.returncode, 0, default.stderr)
+        self.assertEqual(default.stdout, "AUDIT_PASS history_rows=2\n")
+        self.assertEqual(before, self.snapshot())
+        self.assertEqual(private_before, sorted(str(path.relative_to(self.root)) for path in (self.root / "private").rglob("*")))
+
+    def test_audit_cli_json_reports_mismatch_and_partial_classification(self):
+        cases = (
+            (self.row(), {}, 1, 1, "counts: mismatch"),
+            (self.row() + self.row(job_id="DEMO-UNKNOWN-003", nature="Singapore / Contract"), {"Singapore / Internship": 2}, 2, 1, "unclassified"),
+        )
+        for rows, summary_counts, total, classified, issue in cases:
+            with self.subTest(issue=issue):
+                self.write_history(rows, summary_counts)
+                before = self.snapshot()
+                result = subprocess.run([sys.executable, str(SCRIPT), "audit", "--root", str(self.root), "--json"], capture_output=True, text=True)
+                self.assertEqual(result.returncode, 1)
+                report = json.loads(result.stdout)
+                self.assertEqual(report["history_rows"], total)
+                self.assertEqual(sum(report["counts"].values()), classified)
+                self.assertTrue(any(issue in value for value in report["issues"]))
+                self.assertNotIn("Fictional Aurora", result.stdout + result.stderr)
+                self.assertEqual(before, self.snapshot())
+
+    def test_audit_cli_json_does_not_mask_malformed_history(self):
+        path = self.root / self.history
+        path.write_text(path.read_text().replace("| Confirmed on |", "| Changed header |"))
+        before = self.snapshot()
+        result = subprocess.run([sys.executable, str(SCRIPT), "audit", "--root", str(self.root), "--json"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(result.stdout, "")
+        self.assertIn("table header", result.stderr)
+        self.assertEqual(before, self.snapshot())
+
     def test_secret_like_values_and_authenticated_urls_are_not_echoed(self):
         self.event["sync"]["note"] = "password" + ": " + "FICTIONAL_VALUE_DO_NOT_ECHO"
         (self.root / self.input).write_text(json.dumps(self.event))

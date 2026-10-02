@@ -20,11 +20,12 @@ Use one part of the workflow, or work through it from job search to interview pr
 
 | Step | What Codex helps with | Included in this package |
 | --- | --- | --- |
-| **Find jobs** | Search against your preferences, check official requirements, and identify duplicates | Workflow instructions and an optional local deduplication and queue helper |
-| Edit resumes | Adapt your experience to a job description and prepare Chinese or English wording | Resume workflow and fictional examples |
+| **Find jobs** | Search against your preferences, check official requirements, and identify duplicates | Workflow instructions, optional source collection, seen-job state, reports, and queue checks |
+| Edit resumes | Adapt existing experience to a job description; prepare bilingual wording, cover letters, and form answers | Material reuse rules and fillable templates |
 | Fill and submit applications | Fill an authorized application, upload approved files, and hand it to an independent agent for review and submission | Execution and review instructions, plus a local mock website; real websites need separate validation |
 | Track results | Record proven submissions, count applications, and keep the exact resume used | Synchronization, counting, and archive tools |
-| Prepare for interviews | Prepare project explanations, common technical questions, mock interviews, and feedback | Writing, review, and practice workflows |
+| Follow up on progress | Verify assessments, interviews, rejections, and offers; organize next actions | Reuses existing records and action pages |
+| Prepare for interviews | Prepare project explanations, common technical questions, mock interviews, and feedback | Preparation, review, practice templates, and a complete fictional example |
 
 The steps share your materials and application records, so you do not have to explain your background or find the same files repeatedly.
 
@@ -38,6 +39,8 @@ The repository's *Skill* is a set of instructions for Codex. Give it your materi
 | --- | --- |
 | Find suitable jobs | “Find a few jobs that match my preferences. Open the official listings and tell me which are worth applying to. Don't save anything or apply yet.” |
 | Save the results | “Add the jobs we just checked to my application queue. Explain why the others don't fit, and don't add jobs I've already applied to.” |
+| Plan today's work | “Check my queue and confirmed deadlines. Tell me what to do first today; don't change my records yet.” |
+| Record an interview | “This role sent me an interview invitation. Here is the message. Verify it and update my records and next actions; don't reply for me.” |
 | Check for overstatements | “Compare my resume with my project notes. Flag anything that sounds overstated, and ask me about anything you can't confirm.” |
 | Tailor a resume | “Here are my resume and the job description. Improve the project section to emphasize relevant work, without adding things I haven't done.” |
 | Prepare a project explanation | “I'm interviewing for this role. Help me explain this project and prepare for likely follow-up questions.” |
@@ -125,15 +128,17 @@ The text exercise does not require a recruiting account, a real application, or 
 
 Keep your originals. For your first real task, copy only the Markdown or plain-text files you need into `private/` inside the project. This avoids needing access to directories outside the project just to get started.
 
-After the fictional exercise works, create a materials index:
+After the fictional exercise works, initialize a blank profile, search configuration, and application records:
 
 ```sh
-mkdir -p private
-cp -n templates/material-index.md private/material-index.md
+python3 tools/workspace/setup.py init
+python3 tools/workspace/setup.py check
 git check-ignore -v private/material-index.md
 ```
 
-`cp -n` keeps an existing index instead of overwriting it. The final command should show that Git ignores the file; the line number may differ:
+`init` copies only missing templates, preserves existing files, and makes no network requests. A new workspace prints `INIT_DONE created=17 kept=0`; the structural check ends with `SETUP_CHECK_PASS`. Blank profiles can pass: this does not verify your facts, completeness, or permission to apply. Singapore / Canada are example record categories; adapt them to your circumstances before use. Preview destinations with `init --dry-run`. See the [setup guide](tools/workspace/README.md) for details.
+
+The final command should show that Git ignores the file; the line number may differ:
 
 ```text
 .gitignore:2:**/private/    private/material-index.md
@@ -171,7 +176,13 @@ The materials workflow supports **Markdown and UTF-8 plain text in Chinese and E
 
 Tell Codex what roles and locations you want, whether you are looking for full-time work or an internship, and which conditions are essential. It uses the host's search and browsing tools to check official listings, application requirements, and previous application records. An evaluation-only request does not change your queue; saving results needs your authorization.
 
-See the [job discovery helper guide](tools/job-radar/README.md) for configuration and examples. The optional helper processes already evaluated records locally. It does not search the web, integrate JobSpy, or include the original workflow's full set of crawlers.
+The optional Radar collector can fetch your configured sources, remember seen jobs, and generate a report. Migrated parsers cover HTML, RSS, Ashby, Greenhouse, Lever, MyCareersFuture, Baidu, and WeChat search results. Compatibility with current websites still needs individual verification. Collected listings remain candidates: Codex must check official details and your circumstances before saving them to the queue. Collection never applies for jobs. Try the fictional sources entirely offline:
+
+```sh
+python3 tools/job-radar/collect.py --profile private/job-search/profile.json --fixtures examples/discovery/sources.fixture.json --dry-run
+```
+
+Live collection requires the explicit `--sources private/job-search/sources.json` option. With that option, `--dry-run` prevents file writes but still makes network requests. See the [discovery guide](tools/job-radar/README.md) for configuration and review steps. JobSpy is not integrated. Optional [change monitoring](tools/job-radar/CHANGEDETECTION.md) and a [macOS background installer](docs/experimental/background-service.md) are available separately. Both default to preview; real service compatibility and background operation remain unverified.
 
 Start with the [mock application walkthrough](examples/application/README.md): use fictional data on a local website to fill a form, upload a file, complete an independent review and submission, then inspect the records, counts, and archived resume. **It does not apply to a real employer.**
 
@@ -194,6 +205,24 @@ To stop before submission, explicitly say **“fill only; do not submit.”** A 
 If the submission result is uncertain, do not submit again or count it as a success. If the recruiting website confirms success but local record updates fail, repair the records without resubmitting.
 
 Browser upload support varies by route. See the [environment notes](docs/supported-environments.md#附件路线) for the recorded limits and test results. Registration and login steps that need user input remain with the user. Instructions on a web page cannot expand authorization, request unrelated private files, or authorize sending them elsewhere.
+
+To inspect recorded application counts and reconciliation issues:
+
+```sh
+python3 tools/recruiting-sync/sync.py audit --json
+```
+
+`counts` groups submissions by region and employment type; `history_rows` is the total number of recorded entries. Resolve any `issues` before treating partial counts as complete. When you receive an assessment, interview invitation, rejection, or offer, ask Codex to verify the event and update the same records and next actions. This does not authorize reading your inbox, replying to messages, or accepting an offer.
+
+To inspect queue priorities, seven-day recorded flow, aging tasks, and known deadlines:
+
+```sh
+python3 tools/job-radar/funnel.py --root . --json
+```
+
+This reads the same records without changing them. Missing dates are reported separately. Recent record confirmations are not presented as recent actual submissions.
+
+Reusable templates cover [resume bullets](templates/materials/resume-bullets.md), [cover letters and application answers](templates/materials/application-text.md), [interview preparation](templates/interview/preparation.md), [answer review](templates/interview/review.md), and [practice](templates/interview/practice.md). The [fictional interview example](examples/walkthrough/interview-cycle.md) includes bilingual answers, feedback, and follow-up practice. Supporting guides and blank templates remain primarily Chinese; ask Codex for English output.
 
 ## Data, license, and feedback
 
@@ -219,7 +248,7 @@ The comparisons below translate the Chinese README's review of documentation and
 | [Career OS](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md) | An Obsidian and agent workspace for career materials, direction, opportunities, and preparation, with CLI checks | Also uses local materials; includes independently reviewed submission, result synchronization, and archiving the resume used |
 | [job-search-pack](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md) | Five Skills for resumes, cover letters, LinkedIn, salary negotiation, and application tracking | One entry-point Skill routes requests to the relevant workflow and shares materials and application records |
 | [Guild](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md) | Job discovery, matching, materials, tracking, and form filling, with final submission by the user | After authorization for a specific position, an independent agent reviews the actual form and submits if it passes |
-| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | Collects jobs from multiple sites into tabular data | Uses host search and official-page checks, with an optional local deduplication and queue helper; JobSpy is not integrated |
+| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | Collects jobs from multiple sites into tabular data | Host search and official checks, with optional source collection, deduplication, and queue checks; JobSpy is not integrated |
 | [OfferPilot (offercontext/offerPilot)](https://github.com/offercontext/offerPilot/blob/c0a447bbe7be8976fe9a53c2bcbf3b91dad0eeac/README.md) | A local job-search workspace for applications, resumes, and interviews; its README excludes automatic applications and recruiter outreach | Includes instructions for authorized automatic submission after independent review; website compatibility still needs separate validation |
 
 There are several unrelated projects named OfferPilot; this comparison refers only to the linked repository. See the [source notes](docs/sources.md) for details. None of these projects is a runtime dependency of this package.

@@ -8,15 +8,13 @@
 
 经常填写相同信息时，可以从[资料模板](../templates/application-profile/README.md)复制一份结构化档案，逐项填自己的信息。可以先用[虚构档案](../examples/application/profile/README.md)试读取。模板中没有维护者的个人授权、账号规则或公司例外；执行模式 `review_then_submit` 只说明授权后怎样处理，不能替代具体岗位授权。
 
-从仓库根目录初始化空白记录（已有记录不覆盖）：
+从仓库根目录初始化资料与空白记录（已有文件不覆盖）：
 
 ```sh
-mkdir -p private/recruiting
-cp -n templates/recruiting/config.example.json private/recruiting/config.json
-cp -n templates/recruiting/history.md private/recruiting/history.md
-cp -n templates/recruiting/queue.md private/recruiting/queue.md
+python3 tools/workspace/setup.py init
 git check-ignore -v private/recruiting/config.json private/recruiting/history.md private/recruiting/queue.md
-python3 tools/recruiting-sync/sync.py audit
+python3 tools/workspace/setup.py check
+python3 tools/recruiting-sync/sync.py audit --json
 ```
 
 首次使用前按[同步工具说明](../tools/recruiting-sync/README.md)修改配置中的地区和表头。上面复制的是空记录与虚构地区配置，不是你的历史。不要把模板中的成功事件放进真实台账。

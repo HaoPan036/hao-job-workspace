@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for tool in repo-check application-profile application-record recruiting-sync job-radar; do
+          for tool in repo-check application-profile application-record recruiting-sync job-radar workspace; do
             python -m unittest discover -s "tools/$tool/tests" -v
           done
           python -m unittest discover -s examples/application/tests -v

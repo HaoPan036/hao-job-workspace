@@ -1,0 +1,13 @@
+{
+  "base_url": "http://127.0.0.1:5000",
+  "allow_remote": false,
+  "api_key_env": "CHANGEDETECTION_API_KEY",
+  "api_key_path": "",
+  "state_path": "radar/changedetection_state.json",
+  "watch_title_prefix": "Job Workspace | ",
+  "check_interval_hours": 2,
+  "request_timeout_seconds": 30,
+  "collector_timeout_seconds": 900,
+  "source_types": ["html", "rss", "ashby", "greenhouse", "lever", "mycareersfuture", "baidu_campus"],
+  "excluded_source_names": []
+}

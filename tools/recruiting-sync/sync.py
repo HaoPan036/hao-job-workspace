@@ -832,6 +832,8 @@ def main(argv=None):
             sub.add_argument("--counts-mode", choices=COUNTS_MODES, default="strict")
         elif command in ("check", "verify"):
             sub.add_argument("--plan", required=True)
+        elif command == "audit":
+            sub.add_argument("--json", action="store_true", help="Print existing classified counts and issues as read-only JSON")
     args = parser.parse_args(argv)
     try:
         if args.command == "plan":
@@ -843,9 +845,12 @@ def main(argv=None):
             print(("VERIFY_PASS" if args.command == "verify" else "CHECK_PASS") + " counts_mode=" + result["counts_mode"])
         else:
             result = audit(args.root, args.config)
-            for issue in result["issues"]:
-                print(issue)
-            print(f"AUDIT_{'REVISE' if result['issues'] else 'PASS'} history_rows={result['history_rows']}")
+            if args.json:
+                print(json.dumps(result, ensure_ascii=False))
+            else:
+                for issue in result["issues"]:
+                    print(issue)
+                print(f"AUDIT_{'REVISE' if result['issues'] else 'PASS'} history_rows={result['history_rows']}")
             return 1 if result["issues"] else 0
         if result["counts_mode"] == "preserve_existing_counts":
             print(f"LEGACY_WARNING historical categories not fully reclassified; unresolved_rows={result['legacy_unclassified']}")

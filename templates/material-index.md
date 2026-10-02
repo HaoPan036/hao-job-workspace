@@ -11,6 +11,28 @@
 | 准备笔记与练习回答 | 待填写 |
 | 输出目录 | 待填写，建议使用本地 private 目录 |
 
+## 已有材料怎么选
+
+下面只登记当前可用版本。没有的项目留空，不要求每个岗位重新写一份简历。路径仍相对于本索引；结构化正文可填档案逻辑字段，不放密码等账号信息。
+
+| 用途或求职方向 | 语言 | 当前简历文件 | 已确认、可复用的正文位置 |
+| --- | --- | --- | --- |
+| 待填写 | 待填写 | 待填写 | 待填写 |
+
+## 工作记录入口
+
+使用初始化命令后，下面是默认位置；改了文件位置再修改这一表。它们是空模板，不表示你已提供完整资料或授权任何申请。
+
+| 内容 | 默认位置 |
+| --- | --- |
+| 申请档案及文字版本 | `application-profile/index.json` |
+| 求职条件与记录路径 | `job-search/profile.json` |
+| 可选采集来源 | `job-search/sources.json` |
+| 投递同步的地区、路径与表头 | `recruiting/config.json` |
+| 待投岗位 / 已投历史与计数 | `recruiting/queue.md` / `recruiting/history.md` |
+| 当前行动 / 首页 / 公司覆盖 | `job-search/current-actions.md` / `job-search/dashboard.md` / `job-search/company-coverage.md` |
+| 实际投递材料（发生后才创建） | `application-records/records/`，按记录 ID 找原件 |
+
 本次要完成的任务：待填写。
 
 输出语言、篇幅与格式偏好：待填写。

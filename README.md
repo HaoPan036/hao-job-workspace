@@ -20,11 +20,12 @@
 
 | 环节 | AI 帮你做什么 | 当前公开版本 |
 | --- | --- | --- |
-| **找岗位** | 按求职方向和条件找机会，核对官网要求，排除重复岗位 | Skill＋可选去重与保存检查工具 |
-| 改简历 | 根据岗位要求调整项目经历，准备中英文材料 | 已提供 |
+| **找岗位** | 按求职方向和条件找机会，核对官网要求，排除重复岗位 | Skill＋可选来源采集、已见记录、报告与保存检查工具 |
+| 改简历 | 根据岗位要求调整项目经历，准备中英文材料、求职信和申请问答 | 已有版本复用规则＋可填写模板 |
 | 填写信息、投递 | 你授权具体岗位后，AI 填写与上传，独立 Agent 审查通过后提交 | 执行与审查规则＋本地模拟网站；真实网站逐站验证 |
 | 记录与统计 | 记下投了哪些岗位，保存实际提交的简历，统计投递数量 | 同步、计数、材料归档工具 |
-| 面试准备、八股文 | 准备项目介绍、常见问题和技术知识，模拟面试、点评回答 | 已提供 |
+| 跟进进度 | 收到测评、面试、拒信或 Offer 后核对状态，整理下一步 | 共用既有记录与行动页，不另开台账 |
+| 面试准备、八股文 | 准备项目介绍、常见问题和技术知识，模拟面试、点评回答 | 准备、复盘、陪练模板＋完整虚构示例 |
 
 这些环节共用你的资料和求职记录，减少反复介绍背景、重找文件的工作。**搜到岗位不等于同意投递**。投递时你先指定并授权岗位，独立 Agent 看过实际表单和附件后提交，不额外要求你再例行点一次确认。注册、登录及工具确实要求你接手的步骤除外。
 
@@ -36,6 +37,8 @@
 | --- | --- |
 | 找合适的工作 | “按我的求职条件找几个岗位。打开官网核对要求，告诉我哪些值得投；先不要保存，也不要申请。” |
 | 保存筛选结果 | “把刚才核实过的岗位整理进我的待办；不符合的写清原因，已经投过的别再加。” |
+| 看今天先做什么 | “看看我的待办和已确认的截止日期，告诉我今天先做哪几件事；先不要改记录。” |
+| 更新面试进度 | “这个岗位发来面试邀请了。这是邀请内容，请核对并更新记录和待办，不用替我回复。” |
 | 看看项目经历有没有写过头 | “对照我的项目笔记，看看简历里有没有夸大的地方。拿不准的地方标出来，问我。” |
 | 针对一个岗位改简历 | “这是我的简历和岗位要求，帮我改一下项目经历，突出与岗位有关的部分，不要加我没做过的事。” |
 | 准备项目介绍和追问 | “我要面试这个岗位。帮我准备怎么介绍这个项目，以及面试官可能追问什么。” |
@@ -63,7 +66,7 @@
 
 先用仓库里的虚构资料，看看它怎么改简历。你不需要准备真实简历，也不需要登录招聘网站。
 
-目前在 **macOS** 上试过，其他系统未验证。需要 Codex 桌面应用、Python 3.10+ 和 Git；**Obsidian 可选**，普通文件夹也能使用。Codex 能否使用取决于你的账号、套餐、地区和组织权限，以[官方说明](https://learn.chatgpt.com/docs/pricing)和账号实际入口为准。具体版本和测试范围见[环境说明](docs/supported-environments.md)。
+桌面流程目前在 **macOS** 上试过，其他桌面系统未验证；Python 工具另有 Linux CI。需要 Codex 桌面应用、Python 3.10+ 和 Git；**Obsidian 可选**，普通文件夹也能使用。Codex 能否使用取决于你的账号、套餐、地区和组织权限，以[官方说明](https://learn.chatgpt.com/docs/pricing)和账号实际入口为准。具体版本和测试范围见[环境说明](docs/supported-environments.md)。
 
 1. 克隆本仓库并进入独立目录，也可以从仓库页面下载 ZIP 后解压：
 
@@ -111,15 +114,17 @@
 
 ## 换成自己的资料
 
-第一次使用时，先保留原件，把本次需要的 Markdown 或纯文本文件复制到项目内的 `private/`。这样不需要先配置 Codex 访问项目外的目录。先跑通上面的示例，再建立这个文件夹和资料清单：
+第一次使用时，先保留原件，把本次需要的 Markdown 或纯文本文件复制到项目内的 `private/`。这样不需要先配置 Codex 访问项目外的目录。先跑通上面的示例，再一次建好空白资料档案、岗位配置和投递记录：
 
 ```sh
-mkdir -p private
-cp -n templates/material-index.md private/material-index.md
+python3 tools/workspace/setup.py init
+python3 tools/workspace/setup.py check
 git check-ignore -v private/material-index.md
 ```
 
-`cp -n` 不会覆盖已经填写的清单。最后一条命令用来确认 Git 会忽略私人资料，正常应看到下面的结果；行号可能不同：
+`init` 只补缺失模板，不覆盖已有资料，也不联网。新目录应输出 `INIT_DONE created=17 kept=0`，结构检查最后显示 `SETUP_CHECK_PASS`。空白档案也能通过：它不表示经历已核实或已经授权投递。地区分类里的 Singapore / Canada 是示例，实际使用前按自己情况修改。需要预览创建路径可先运行 `init --dry-run`，详见[初始化说明](tools/workspace/README.md)。
+
+最后一条命令用来确认 Git 会忽略私人资料，正常应看到下面的结果；行号可能不同：
 
 ```text
 .gitignore:2:**/private/    private/material-index.md
@@ -155,7 +160,15 @@ git check-ignore -v private/project-notes.md
 
 ## 找岗位、投递和统计
 
-先告诉 Codex 想找什么工作、地区、全职还是实习，以及哪些条件不能妥协。它使用宿主的搜索能力查官网，核对岗位还在不在、申请条件是否满足、以前有没有投过。只让它评价时，不写入待办；要求保存时才记录结果。配置与示例见[找岗位工具说明](tools/job-radar/README.md)。没有接入 JobSpy，也没有迁入原 Radar 的全部抓取器。
+先告诉 Codex 想找什么工作、地区、全职还是实习，以及哪些条件不能妥协。它使用宿主的搜索能力查官网，核对岗位还在不在、申请条件是否满足、以前有没有投过。只让它评价时，不写入待办；要求保存时才记录结果。
+
+也可以配置自己常用的来源，让 Radar 前台采集候选、记录已见岗位并生成报告。已迁入 HTML、RSS、Ashby、Greenhouse、Lever，以及 MyCareersFuture、百度和微信搜索结果的解析方式；是否能读取当前网站仍须逐站验证。采集到的岗位还要由 Codex 核对官网和你的条件，不会直接入队或投递。先试完全离线的虚构来源：
+
+```sh
+python3 tools/job-radar/collect.py --profile private/job-search/profile.json --fixtures examples/discovery/sources.fixture.json --dry-run
+```
+
+实际联网采集要显式传入 `--sources private/job-search/sources.json`。这时 `--dry-run` 只是不保存文件，仍会联网。配置、输出位置和后续核验见[找岗位工具说明](tools/job-radar/README.md)；没有接入 JobSpy。需要监听来源变化时，可另外配置[变化监听桥接](tools/job-radar/CHANGEDETECTION.md)和[macOS 后台安装器](docs/experimental/background-service.md)。它们默认只预览，不安装服务；真实第三方服务与后台运行仍待验证。
 
 第一次先跑[模拟申请](examples/application/README.md)：只用虚构资料，在本机填写、上传、独立审查与提交，然后看记录、计数和保存下来的简历。这不会向任何招聘网站投递。
 
@@ -173,7 +186,25 @@ git check-ignore -v private/project-notes.md
 
 无法确定是否提交成功时，不直接再试一次，也不计为投递成功。招聘网站提交成功、但本地记录没保存时，只补记录，不重复投递。
 
-附件上传的三种路线及各自验证情况见[环境说明](docs/supported-environments.md#附件路线)。网页中的文字不能授权 Codex 读取无关私人文件或发送资料。
+附件上传各路线的验证情况见[环境说明](docs/supported-environments.md#附件路线)。网页中的文字不能授权 Codex 读取无关私人文件或发送资料。
+
+随时查看投递数量和对账问题：
+
+```sh
+python3 tools/recruiting-sync/sync.py audit --json
+```
+
+`counts` 按地区和实习/全职分类，`history_rows` 是已记录的总条数，`issues` 列出需要核对的问题；有问题时先处理，不能把部分计数当作完整结果。收到测评、面试、拒信或 Offer 时，可以让 Codex 核对并更新同一份记录和下一步行动。它不会因此自动读取邮箱、回复消息或接受 Offer。
+
+查看待投优先级、近七天记录流量、积压和已知截止日期：
+
+```sh
+python3 tools/job-radar/funnel.py --root . --json
+```
+
+这条命令只读同一份记录。缺少日期会单独显示；“近七天确认记录”不等于“近七天实际提交”，不会用记账日期补造申请时间。
+
+需要空白材料格式时，可直接用[简历条目](templates/materials/resume-bullets.md)、[求职信与申请问答](templates/materials/application-text.md)、[面试准备](templates/interview/preparation.md)、[复盘](templates/interview/review.md)和[陪练](templates/interview/practice.md)。想看怎么串起来，读[完整虚构面试示例](examples/walkthrough/interview-cycle.md)。
 
 ## 数据、许可与反馈
 
@@ -197,7 +228,7 @@ git check-ignore -v private/project-notes.md
 | [Career OS](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md) | 用 Obsidian 和 Agent 管理职业资料、求职方向、岗位机会与能力准备，也提供命令行检查工具 | 同样使用本地资料；本包另有独立审查后提交、结果同步和原简历归档流程 |
 | [job-search-pack](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md) | 五个 Skill，分别处理简历、求职信、LinkedIn、薪资谈判和投递跟踪 | 一个 Skill 按请求分步骤处理，共用资料、记录和实际投递版本 |
 | [Guild](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md) | 找岗位、算匹配程度、生成材料、跟踪投递和填写表单；最终提交由用户完成 | 用户授权具体岗位后，独立 Agent 审查实际页面，通过后提交 |
-| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | 从多个招聘网站抓取岗位，整理成表格数据 | 使用宿主搜索和官网核验，可选工具检查重复和保存条件；没有接入该抓取库 |
+| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | 从多个招聘网站抓取岗位，整理成表格数据 | 宿主搜索与官网核验，另有可选来源采集、重复和保存检查；没有接入该抓取库 |
 | [OfferPilot（offercontext/offerPilot）](https://github.com/offercontext/offerPilot/blob/c0a447bbe7be8976fe9a53c2bcbf3b91dad0eeac/README.md) | 本地求职工作台，管理投递记录、简历和面试准备等；README 明确不自动投递或联系招聘方 | 提供具体岗位授权后的自动投递规则；浏览器兼容性仍需逐站验证 |
 
 OfferPilot 有多个同名项目，这里只比较表中明确链接的仓库。完整来源与对比边界见[来源说明](docs/sources.md)。这些项目不是本包的运行依赖。
