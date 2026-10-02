@@ -5,7 +5,7 @@
 | 组成 | 当前范围 | 验证边界 |
 | --- | --- | --- |
 | Obsidian + Codex 桌面 / macOS | 共享本地目录，Markdown 资料与中英文材料 | 私人环境已使用；新用户应用界面冷启动尚未验收 |
-| career-workspace Skill | 事实核对、简历文字、面试准备/复盘/陪练 | 独立副本 Agent 演练通过；不等于陌生用户验收 |
+| hao-job-workspace Skill | 事实核对、简历文字、面试准备/复盘/陪练 | 独立副本 Agent 演练通过；不等于陌生用户验收 |
 | Python 与 Git | 运行公开副本检查器 | Python 3.10+，标准库；维护环境为 3.11.14，不代表全部版本实测 |
 | 网页填表 | 后续迁移，依赖桌面浏览器能力 | 当前包不含此流程 |
 | CLI、IDE、其他系统 | 可能使用文件与 Skill 能力 | 项目路线未验收；官方内置浏览器不在 CLI/IDE 中提供 |
@@ -14,7 +14,7 @@
 
 ## 安装与账号
 
-- 安装 Obsidian 与支持 Codex 的桌面应用，在 Codex 中登录、打开发行副本，并确认可以读取其中的虚构文件及使用 Skill。按[官方上手指南](https://learn.chatgpt.com/docs/quickstart)操作。
+- 安装 Obsidian 与支持 Codex 的桌面应用，在 Codex 中登录、打开克隆后的文件夹，并确认可以读取其中的虚构文件及使用 Skill。按[官方上手指南](https://learn.chatgpt.com/docs/quickstart)操作。
 - 检查账号当前能选择 Codex、额度是否足够、组织是否允许本地文件和所需工具。后续网页任务还须确认浏览器入口与网站权限。套餐、地区及组织限制以[官方说明](https://learn.chatgpt.com/docs/pricing)和账户显示为准，不要求用户盲买特定套餐。
 - 运行检查需要 Python 3.10+ 与 Git。可从 [Python 官方下载](https://www.python.org/downloads/)和 [Git 安装说明](https://git-scm.com/downloads)安装；随后执行 `python3 --version`、`git --version`。
 - 如果 `python3` 仍指向旧系统版本，使用新安装的解释器（例如 `python3.11`）替换后续命令里的 `python3`；安装了新版本不等于默认命令已经切换。

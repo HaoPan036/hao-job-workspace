@@ -17,7 +17,7 @@
 
 ## 跑一遍
 
-把整个发行副本复制到临时练习目录，保留 `.agents/skills/`，在 Agent 中打开这份副本的根目录。先指定使用 `career-workspace` Skill，并说明以下文件均位于 `examples/walkthrough/`。以下请求依次发送，产物只写到这份练习副本。已有文件是参考结果，可在完成自己的回答后对照。
+把整个克隆后的文件夹复制到临时练习目录，保留 `.agents/skills/`，在 Agent 中打开这份副本的根目录。先指定使用 `hao-job-workspace` Skill，并说明以下文件均位于 `examples/walkthrough/`。以下请求依次发送，产物只写到这份练习副本。已有文件是参考结果，可在完成自己的回答后对照。
 
 1. **按当时已有信息核实。**
 

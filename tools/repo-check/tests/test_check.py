@@ -44,7 +44,7 @@ class PackageChecks(unittest.TestCase):
             with self.subTest(path=path):
                 self.git("check-ignore", "--no-index", path)
         result = subprocess.run(["git", "-C", str(self.root), "check-ignore", "--no-index",
-                                 ".obsidian/snippets/career-workspace.css"], capture_output=True)
+                                 ".obsidian/snippets/hao-job-workspace.css"], capture_output=True)
         self.assertEqual(result.returncode, 1)
 
     def test_links_in_arbitrary_public_folder_are_checked(self):

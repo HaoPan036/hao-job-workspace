@@ -1,9 +1,9 @@
 ---
-name: career-workspace
+name: hao-job-workspace
 description: "Prepare evidence-backed resumes and interview materials from the user's own notes, verify specific personal claims, review supplied answers, and run interview practice. Use for career materials and interview preparation; not for job discovery, browser applications, application tracking, or general knowledge-base maintenance."
 ---
 
-# Career Workspace
+# Hao Job Workspace
 
 用用户自己的资料，完成简历文字、事实核对、面试准备、复盘或陪练。此 Skill 可独立安装；所需行为规则与参考文件都在本目录内，不依赖另一个仓库的根规则。
 

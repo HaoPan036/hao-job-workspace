@@ -1,0 +1,22 @@
+# 来源、许可与对比依据
+
+本仓库的工作流、事实卡约定、模板和 repo-check 从维护者自有的求职工作流抽取并去个人化；示例是新写的虚构资料。公开版本不包含原私人仓库历史、真实简历、公司材料或原始面试记录。
+
+[LICENSE](../LICENSE) 为完整 MIT 文本，版权声明为 `Copyright (c) 2026 Hao Job Workspace contributors`。它覆盖本仓库原创内容，不重新授权用户资料、招聘网站内容或下面链接到的项目与官方文档。
+
+## 运行环境与文档引用
+
+- [Obsidian](https://obsidian.md/) 用于阅读与编辑本地 Markdown；本仓库不分发 Obsidian 程序或第三方插件。
+- [Python](https://www.python.org/) 与 [Git](https://git-scm.com/) 是本机检查工具；repo-check 只使用 Python 标准库，本仓库不打包这些程序。
+- Codex 使用说明链接到 [OpenAI 上手指南](https://learn.chatgpt.com/docs/quickstart)、[Skill 文档](https://learn.chatgpt.com/docs/build-skills)、[账号与套餐](https://learn.chatgpt.com/docs/pricing)及[浏览器说明](https://learn.chatgpt.com/docs/browser)。官方功能说明与本项目的实际验收分别记录。
+
+## 相近项目：核对于 2026-10-02
+
+以下是对照阅读，不表示本项目移植自这些仓库；它们也未作为本包运行依赖或分发内容。引用固定到本次所读版本，后续可能变化。
+
+- **Career OS**：版本 `370274792e6259d5b874ec627c5e31140309f03c`。[README](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md)描述 Obsidian/Agent 职业工作区；[数据模型](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/docs/data-model.md#L63-L69)也有 Claim 状态、用途与来源约束，不能把这些约束称为本项目独有。
+- **job-search-pack**：版本 `d603672432ad67d5b26d1b320044d9cd1a05c980`。[README](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md)列出五项求职 Skills；[Resume Tailor](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/skills/resume-tailor/SKILL.md#L89-L91)也明确禁止虚构，不用“它只润色、我们才核实”来概括差异。
+- **Guild**：对应仓库 `arafa-dev/ai-job-application-automation`，版本 `de8cc9343bd046613b1f4b59e436fb517eb93131`。[README](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md)说明全流程定位与用户最终提交；[校验代码](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/packages/cv-engine/src/validators.ts#L132-L177)包含 bullet ID、改写距离、新增数量词与已知技能检查。它有程序约束，但这些约束也不等于完整的语义真实性保证。
+- **JobSpy**：版本 `10b5417c8f2c99a6159733cf0f52a06c96c3832d`。[README](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md)说明多来源岗位采集与 DataFrame 输出；本项目尚未集成该库。
+
+本项目的工作规则也不证明事实卡本身真实，repo-check 不核实简历语义。未来若实际复用第三方代码或 Skill，应另行记录文件来源、版本、许可证及必要版权声明，不能以这张对比表代替来源审查。

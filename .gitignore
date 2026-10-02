@@ -11,7 +11,7 @@
 **/.obsidian/*
 !/.obsidian/snippets/
 /.obsidian/snippets/*
-!/.obsidian/snippets/career-workspace.css
+!/.obsidian/snippets/hao-job-workspace.css
 
 .DS_Store
 **/__pycache__/
