@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "entries": {
+    "answers.self_evaluation": {
+      "record_id": "fictional-answer-001",
+      "status": "FICTIONAL",
+      "value": "In this fictional exercise, I organize project notes and check a small example dataset.",
+      "reuse_scope": [
+        "fictional walkthrough only"
+      ],
+      "confirmed_on": null,
+      "refresh_triggers": [
+        "Replace this example before any real use."
+      ],
+      "source": "Fabricated example; not a user confirmation."
+    }
+  }
+}

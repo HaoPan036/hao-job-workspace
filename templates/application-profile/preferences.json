@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "entries": {
+    "fill_policy": {
+      "mode": "review_then_submit",
+      "status": "NEEDS_CONFIRMATION",
+      "account_access_preference": "user_managed",
+      "reuse_scope": [],
+      "confirmed_on": null,
+      "source": "Template only. No permission to register, log in, upload, save, fill or submit. Each concrete job and action needs user authorization."
+    }
+  }
+}

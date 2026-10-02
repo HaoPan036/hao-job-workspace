@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "entries": {
+    "education": [
+      {
+        "record_id": "fictional-study-001",
+        "status": "FICTIONAL",
+        "name": "Example Institute (fictional)",
+        "degree": "Example Degree (fictional)",
+        "source": "Fabricated example; not a user statement."
+      }
+    ],
+    "employment": [
+      {
+        "record_id": "fictional-work-001",
+        "status": "FICTIONAL",
+        "company": "Example Studio (fictional)",
+        "role": "Example Project Assistant (fictional)",
+        "source": "Fabricated example; not a user statement.",
+        "_text_refs": {
+          "zh": "employment[0].description.zh",
+          "en": "employment[0].description.en"
+        }
+      }
+    ]
+  }
+}

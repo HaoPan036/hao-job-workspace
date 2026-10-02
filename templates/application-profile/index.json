@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "modules": {
+    "preferences": "preferences.json",
+    "facts": "facts.json",
+    "answers": "answers.json",
+    "internship": "internship.json",
+    "zh": "zh.json",
+    "en": "en.json",
+    "history": "history.json"
+  },
+  "aliases": {},
+  "current_fill_index": {
+    "required_refs": [
+      "fill_policy"
+    ],
+    "internship_refs": [
+      "availability.internship"
+    ],
+    "language_modules": {
+      "zh": "zh",
+      "en": "en"
+    },
+    "common_refs": {
+      "education": "education",
+      "employment": "employment"
+    },
+    "on_demand_refs": {
+      "application_text": {
+        "zh": "application_text.zh",
+        "en": "application_text.en"
+      }
+    },
+    "company_refs": {},
+    "problem_family_refs": {
+      "self_evaluation": [
+        "answers.self_evaluation"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mode": "workspace_discovery",
+  "requested_writeback": "sync_verified_candidates",
+  "batch_date": "2026-10-01",
+  "companies": ["Fictional Harbor Analytics", "Fictional Maple Systems"],
+  "evaluated_candidates": [
+    {"job_id": "FICT-SG-101", "disposition": "manual_review"},
+    {"job_id": "FICT-CA-202", "disposition": "queued"}
+  ],
+  "stale_markers": ["Review fictional companies before saving outcomes"]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "application_execution": {
+    "target": {
+      "company": "Fictional Aurora Labs",
+      "role": "Software Engineering Intern",
+      "job_id": "DEMO-SG-001",
+      "official_url": "https://careers.example.com/jobs/DEMO-SG-001",
+      "aliases": {
+        "companies": [],
+        "job_ids": [],
+        "official_urls": []
+      }
+    },
+    "outcome": "success_proven",
+    "result_timestamp": null,
+    "application_id": null,
+    "submission_evidence": [
+      {
+        "kind": "user_confirmation",
+        "reference": "Fictional walkthrough only: Example User A confirmed this exact application.",
+        "observed_at": null
+      }
+    ]
+  },
+  "sync": {
+    "confirmed_on": "2026-10-01",
+    "submitted_on": null,
+    "region": "singapore",
+    "employment_type": "internship",
+    "location": "Singapore",
+    "status": "Submitted; awaiting response",
+    "note": "Fictional Example User A walkthrough event.",
+    "material_record_id": null
+  }
+}

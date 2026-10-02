@@ -1,0 +1,9 @@
+{
+  "schema_version": 2,
+  "entries": {
+    "history.old": {
+      "status": "FICTIONAL_EXPIRED",
+      "value": "A fictional prior draft for testing explicit history access."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+name: Check public package
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  checks:
+    strategy:
+      matrix:
+        python: ['3.10', '3.11', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python tools/repo-check/check.py
+      - name: Test local tools and fictional application
+        shell: bash
+        run: |
+          set -euo pipefail
+          for tool in repo-check application-profile application-record recruiting-sync job-radar; do
+            python -m unittest discover -s "tools/$tool/tests" -v
+          done
+          python -m unittest discover -s examples/application/tests -v

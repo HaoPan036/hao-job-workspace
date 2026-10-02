@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "entries": {
+    "answers.self_evaluation": {
+      "status": "NEEDS_CONFIRMATION",
+      "value": null,
+      "reuse_scope": [],
+      "confirmed_on": null,
+      "refresh_triggers": [
+        "User supplies or corrects this answer."
+      ],
+      "source": null
+    }
+  }
+}

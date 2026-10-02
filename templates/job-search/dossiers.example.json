@@ -1,0 +1,52 @@
+[
+  {
+    "job_identity": {
+      "company": "Fictional Harbor Analytics",
+      "title": "Data Analyst Intern",
+      "job_id": "FICT-SG-101",
+      "official_url": "https://harbor.example/jobs/FICT-SG-101",
+      "location": "Singapore",
+      "employment_type": "Internship",
+      "status": "OPEN"
+    },
+    "verification": {
+      "status": "VERIFIED",
+      "reasons": ["FICTIONAL FIXTURE: role title, duties and application action matched a fabricated official page."],
+      "checked_at": "2026-10-01"
+    },
+    "feasibility": {
+      "status": "UNKNOWN",
+      "reasons": ["FICTIONAL student A meets the stated 2028 graduation requirement."],
+      "unknowns": ["Internship work authorization has not been confirmed."]
+    },
+    "capability_match": {
+      "level": "MEDIUM",
+      "supporting_evidence": ["FICTIONAL student A completed a SQL course project."],
+      "gaps": ["No production analytics delivery."]
+    },
+    "strategic_priority": {"level": "HIGH", "reasons": ["Matches the fictional student's confirmed analytics internship target."]},
+    "application_route": {"routes": ["Analytics"], "resume_variant": "student-analytics.md", "narrative": "Course project practice", "project_order": ["fictional-sql-project"]},
+    "recommendation": {"action": "MANUAL_REVIEW", "rationale": ["Confirm internship work authorization; the region does not itself exclude internships."]},
+    "provenance": {"fetched_at": "2026-10-01T00:00:00Z", "source": "Fictional fixture; no website was contacted", "evaluator": "fictional-example", "version": "2.0"},
+    "requirements": {"required": ["Current student graduating in 2028", "SQL fundamentals"], "preferred": [], "nice_to_have": [], "unclassified": ["Work authorization not stated"]}
+  },
+  {
+    "job_identity": {
+      "company": "Fictional Maple Systems",
+      "title": "Backend Engineer",
+      "job_id": "FICT-CA-202",
+      "official_url": "https://maple.example/jobs/FICT-CA-202",
+      "location": "Toronto, Canada",
+      "employment_type": "Full Time",
+      "status": "OPEN"
+    },
+    "verification": {"status": "VERIFIED", "reasons": ["FICTIONAL FIXTURE: role title, duties and application action matched a fabricated official page."], "checked_at": "2026-10-01"},
+    "feasibility": {"status": "PASS", "reasons": ["FICTIONAL user B has three years of backend work and confirmed local work authorization."], "unknowns": []},
+    "capability_match": {"level": "HIGH", "supporting_evidence": ["FICTIONAL user B maintained a PostgreSQL-backed API."], "gaps": ["No experience with the employer's optional message broker."]},
+    "strategic_priority": {"level": "MEDIUM", "reasons": ["Matches the fictional user's confirmed backend route."]},
+    "application_route": {"routes": ["Backend engineering"], "resume_variant": "backend.md", "narrative": "API maintenance", "project_order": ["fictional-api"]},
+    "recommendation": {"action": "APPLY_BATCH", "rationale": ["Required conditions met; optional broker experience is not a hard barrier."]},
+    "provenance": {"fetched_at": "2026-10-01T00:00:00Z", "source": "Fictional fixture; no website was contacted", "evaluator": "fictional-example", "version": "2.0"},
+    "requirements": {"required": ["Two years of backend development", "Local work authorization"], "preferred": ["Message broker experience"], "nice_to_have": [], "unclassified": []}
+  }
+]

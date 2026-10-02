@@ -1,0 +1,21 @@
+{
+  "target_roles": ["Backend Engineer"],
+  "locations": ["Toronto, Canada"],
+  "target_companies": [],
+  "discovery_domain_hints": ["API", "PostgreSQL"],
+  "allowed_graduation_years": [],
+  "internship_excluded_locations": [],
+  "feasibility": {
+    "candidate_experience_years": 3,
+    "work_authorization_by_location": {"toronto, canada": "AUTHORIZED"}
+  },
+  "application_queue": {
+    "enabled": false,
+    "path": "../recruiting/queue.md",
+    "application_history_path": "../recruiting/history.md",
+    "max_new_per_run": 8
+  },
+  "company_coverage": "company-coverage.md",
+  "current_actions": "current-actions.md",
+  "dashboard": "dashboard.md"
+}

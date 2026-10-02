@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "entries": {
+    "availability.internship": {
+      "status": "NEEDS_CONFIRMATION",
+      "value": null,
+      "reuse_scope": [],
+      "confirmed_on": null,
+      "refresh_triggers": [
+        "Dates, availability or job requirements change."
+      ],
+      "source": null
+    }
+  }
+}

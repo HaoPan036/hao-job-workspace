@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "paths": {
+    "history": "private/recruiting/history.md",
+    "queue": "private/recruiting/queue.md"
+  },
+  "regions": {
+    "singapore": {
+      "label": "Singapore",
+      "aliases": [
+        "新加坡"
+      ]
+    },
+    "canada": {
+      "label": "Canada",
+      "aliases": [
+        "Toronto",
+        "Vancouver",
+        "加拿大"
+      ]
+    }
+  },
+  "markdown": {
+    "history_heading": "## Submitted applications",
+    "queue_heading": "## Pending applications",
+    "counts_heading": "## Application counts",
+    "history_headers": [
+      "Confirmed on",
+      "Submitted on",
+      "Company",
+      "Role",
+      "Region / type",
+      "Status",
+      "Official job",
+      "Note"
+    ],
+    "count_headers": [
+      "Category",
+      "Submitted",
+      "Target",
+      "Remaining"
+    ],
+    "employment_labels": {
+      "full_time": "Full time",
+      "internship": "Internship"
+    },
+    "total_labels": {
+      "full_time": "All full time",
+      "all": "All submitted"
+    },
+    "unknown_date": "Not recorded"
+  }
+}
