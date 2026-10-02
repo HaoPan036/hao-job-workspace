@@ -1,33 +1,40 @@
 # Hao Job Workspace · 求职工作台
 
-用自己的项目资料核对事实、修改中英文简历、准备和练习面试。Obsidian 用来阅读与编辑资料，Codex 桌面应用在同一文件夹中执行任务。
+把项目笔记整理成简历里能写、面试时能讲清楚的经历。
 
-> 原始记录：首次执行超时，重试后仍超时，按策略停止。
+你用 **Obsidian** 保存和整理资料，再让 **Codex** 帮你改简历、准备项目介绍、模拟面试。本项目提供一套 Skill，也就是给 Codex 的操作说明：先看你提供的资料，再改写；没有依据的说法单独列出来，等你确认。
+
+比如，你的项目记录和 AI 写出的简历可能是这样：
+
+> 项目记录：程序超时后又试了一次，还是超时，于是停止运行。
 >
-> AI 草稿：解决了性能问题。
+> AI 写成：解决了性能问题。
 >
-> 来源复核：Agent 指出改善结论缺少依据，修订为“实现有限重试和停止规则，在两次尝试均超时后停止本轮执行”。
+> 对照记录后改成：为程序加上重试和停止规则，两次尝试都超时后停止运行。
 
-这是[虚构案例](examples/timeout/source.md)中的来源对照，职责也须有单独依据；不是程序自动判断简历真伪。
+这个[虚构例子](examples/timeout/source.md)说明：程序按规则停下了，不能说性能问题已经解决。例子另有资料说明这些规则是谁写的，不能只看运行结果就认定是你做的。
 
-本项目独立维护，只提供通用工作流、工具和虚构示例。如果你已有求职资料，可以保留原件，只向 Agent 提供本次需要的部分；仅导入资料不会自动修改原件，保存或修订按你明确指定的范围进行。
-
-首批提供资料索引模板、一个独立 Skill 和虚构贯通练习。找岗位、网页投递、材料归档与同步仍在后续迁移范围；当前版本尚未经过陌生用户验收。进度见 [ROADMAP](ROADMAP.md)。
+**目前是早期版本**，包含一个 Skill、资料清单模板和一套虚构练习。现在可以处理简历和面试材料，还不能找岗位或代你投递，尚未经过陌生用户试用。后续计划见 [ROADMAP](ROADMAP.md)。
 
 ## 现在可以做什么
 
-| 任务 | 请求示例 |
+| 你想做什么 | 可以直接这样问 Codex |
 | --- | --- |
-| 事实核对 | “核对这个项目中的个人职责与结果，保留没有依据的问题。” |
-| 简历编辑 | “按这份 JD 修改指定段落，给出等义中英文版本和事实引用。” |
-| 面试准备 | “基于已有项目资料写回答、准备追问，列出需要补学的技术。” |
-| 复盘与陪练 | “解释我这段回答的问题，给出修订稿，然后一次问我一个问题。” |
+| 看看项目经历有没有写过头 | “对照我的项目笔记，看看简历里有没有夸大的地方。拿不准的地方标出来，问我。” |
+| 针对一个岗位改简历 | “这是我的简历和岗位要求，帮我改一下项目经历，突出与岗位有关的部分，不要加我没做过的事。” |
+| 准备项目介绍和追问 | “我要面试这个岗位。帮我准备怎么介绍这个项目，以及面试官可能追问什么。” |
+| 看看上次面试哪里没答好 | “这是我上次面试的回答。哪里没说清楚？应该怎么回答更好？” |
+| 找人练一遍面试 | “你来当面试官，根据我的简历提问。一次问一道，等我回答后再点评。” |
 
-事实状态、指标口径与冲突处理见 [事实规则](.agents/skills/hao-job-workspace/references/evidence.md)。未核实内容不进入正式简历或面试回答；已核实内容仍受用途与范围限制。这些是 Agent 的工作规则，检查器不能全面验证自然语言是否符合事实。
+需要英文版时，直接加一句：“再给我一版英文，职责和结果要与中文一致。”
 
-## 从虚构资料开始
+写完后，Codex 应另外说明每个关键说法来自哪份资料、还有哪些地方没确认。这些要求写在 [Skill 规则](.agents/skills/hao-job-workspace/references/evidence.md)里；AI 仍可能出错，使用前需要自己检查。
 
-维护者已在 **macOS** 验证仓库检查与材料 Agent 演练，其他系统未验证。账号能否使用 Codex 和后续浏览器控制，取决于套餐、地区与组织权限，以[官方说明](https://learn.chatgpt.com/docs/pricing)和账号实际入口为准；本页材料示例无需浏览器控制。详细范围见[环境说明](docs/supported-environments.md)。
+## 先用示例试一次
+
+先用仓库里的虚构资料，看看它怎么改简历。你不需要准备真实简历，也不需要登录招聘网站。
+
+目前在 **macOS** 上试过，其他系统未验证。需要 Obsidian、Codex 桌面应用、Python 3.10+ 和 Git。Codex 能否使用取决于你的账号、套餐、地区和组织权限，以[官方说明](https://learn.chatgpt.com/docs/pricing)和账号实际入口为准。具体版本和测试范围见[环境说明](docs/supported-environments.md)。
 
 1. 克隆本仓库并进入独立目录，也可以从仓库页面下载 ZIP 后解压：
 
@@ -36,8 +43,8 @@
    cd hao-job-workspace
    ```
 
-2. 安装 [Obsidian](https://obsidian.md/download) 和支持 Codex 的桌面应用，按[官方上手指南](https://learn.chatgpt.com/docs/quickstart)登录并选择 Codex。将克隆后的文件夹分别作为 Obsidian 资料库和 Codex 本地项目打开。
-3. 在克隆后的文件夹根目录运行检查。需要 Python 3.10+ 和 Git，无需 Node 或额外 Python 包。若使用解压包而不是 Git 克隆，先运行 `git init`。
+2. 安装 [Obsidian](https://obsidian.md/download) 和支持 Codex 的桌面应用，按[官方上手指南](https://learn.chatgpt.com/docs/quickstart)登录并选择 Codex。在 Obsidian 中选择“打开本地仓库”，打开刚下载的文件夹；在 Codex 中也打开这个文件夹。
+3. 在这个文件夹中打开终端，运行下面的检查。无需安装 Node 或额外的 Python 包。如果下载的是 ZIP，先运行 `git init`。
 
    ```sh
    python3 --version
@@ -53,24 +60,29 @@
    repo-check: view=worktree errors=0 warnings=0
    ```
 
-   它检查本地链接、Skill 元数据、忽略规则、凭据模式和 Git 空白问题，**不核实简历内容或事实卡是否真实**。出现 `ERROR` 或 `WARN` 时，按输出的文件、行号和类别处理，或将脱敏结果写入[试用记录](docs/tryout.md)；不要把带警告的结果当作全部通过。
+   这表示项目文件、文档链接和 Git 忽略设置等检查通过。检查器也会查找一些常见的敏感信息格式，**但不会判断你的简历写得是否真实**。如果出现 `ERROR` 或 `WARN`，先看提示里的文件和行号；不知道怎么处理时，可以按[试用记录](docs/tryout.md)反馈，去掉其中的个人信息。
 
-4. 向 Codex 发送下面的请求。仓库已带有 `.agents/skills/hao-job-workspace/`；如果没有自动识别，直接让它读取其中的 `SKILL.md`，无需改自己的全局设置。[官方 Skill 加载说明](https://learn.chatgpt.com/docs/build-skills)
+4. 把下面这段话发给 Codex：
 
    ```text
    使用 hao-job-workspace Skill。
-   读取 examples/walkthrough/source.md 和 examples/walkthrough/target-role.md，
-   核对当前个人职责与实际结果，写一条中英文简历表述和一段面试回答，
-   另列事实引用和未解决问题。先在对话中交付，不改文件。
+   项目资料在 examples/walkthrough/source.md，
+   岗位要求在 examples/walkthrough/target-role.md。
+   请根据这些资料，帮我写一条可以放进简历的项目经历，再给一版英文。
+   然后帮我准备面试时怎么介绍这个项目。
+   写完后告诉我：这些说法分别根据哪段资料，还有哪些地方需要确认。
+   先把结果发在对话里，不要修改文件。
    ```
 
-5. 按[贯通练习](examples/walkthrough/README.md)继续：资料核实 → 简历 → 面试 → 新证据 → 查找引用并人工复查。完整参考结果随包提供。初次试用只用虚构资料。
+   如果 Codex 找不到这个 Skill，就让它先读 `.agents/skills/hao-job-workspace/SKILL.md`。文件已经在仓库里，不需要修改全局设置。加载方式见[官方说明](https://learn.chatgpt.com/docs/build-skills)。
+
+5. 想继续练习，可以打开[完整示例](examples/walkthrough/README.md)：先写简历和面试回答，再补充一份资料，看看原来的说法应该怎样改。示例附有参考答案，完成后再对照。
 
 无需浏览器账号或真实投递。阅读与练习不用付费 Obsidian 同步服务。可选样式在 Obsidian 的“外观 → CSS 代码片段”中开启 `hao-job-workspace`；它只整理文件列表，不隐藏或保护敏感数据。
 
 ## 换成自己的资料
 
-先确认虚构示例和忽略检查正常，再在自己的独立副本里操作：
+已有简历和笔记可以留在原处，只提供这次要用的部分。如果想放进项目文件夹，先跑通上面的示例，再建立 `private/` 文件夹和资料清单：
 
 ```sh
 mkdir -p private
@@ -78,7 +90,7 @@ cp -n templates/material-index.md private/material-index.md
 git check-ignore -v private/material-index.md
 ```
 
-`cp -n` 保留已有索引，不覆盖你已填的内容。正常忽略结果如下；行号可能随文件编辑变化：
+`cp -n` 不会覆盖已经填写的清单。最后一条命令用来确认 Git 会忽略私人资料，正常应看到下面的结果；行号可能不同：
 
 ```text
 .gitignore:2:**/private/    private/material-index.md
@@ -92,25 +104,23 @@ git check-ignore -v private/material-index.md
 
 若仍无匹配，用 `git ls-files -- private/material-index.md` 检查是否已经跟踪该文件。有输出时，可用 `git rm --cached -- private/material-index.md` 仅移出 Git 索引、保留本地文件，再运行忽略检查；这不会删除已经存在的提交历史。忽略检查通过前只用虚构资料。
 
-填写本地索引中的经历、事实、简历、JD、准备笔记和输出位置；原始资料与生成材料均留在 `private/`，也可使用包外的私人工作区。只在需要时向 Agent 提供这些位置。索引不是事实核实结果。
+打开 `private/material-index.md`，填上你的项目笔记、简历和岗位要求分别放在哪里，以及希望把改好的材料保存到哪里。它只是一张文件清单，方便 Codex 找资料，不代表里面的经历已经核实。
 
-第一批处理 Markdown 与纯文本；中文和英文均有流程。PDF、DOCX 的提取和排版需另行验证，不能把文字稿检查通过当作原文件排版通过。详情见 [环境说明](docs/supported-environments.md)。
+真实资料和生成的材料都放在 `private/` 或项目文件夹之外。让 Codex 修改或保存文件时，说清楚要改哪份、存在哪里；默认保留原件。
 
-## 后续网页投递的边界
+目前先支持 Markdown 和纯文本，中英文都可以。PDF、Word 简历的读取和排版还没验证，先复制需要修改的文字来使用。详情见[环境说明](docs/supported-environments.md)。
 
-当前包不执行网页投递。迁移时采用以下规则：
+## 还不能做什么
 
-- 注册、登录、密码和验证码由用户完成；不保存凭据或绕过网站验证。
-- 内置浏览器不能自动上传附件，由用户上传，Agent 回读文件名和结果。[官方说明](https://learn.chatgpt.com/docs/browser)
-- 前台 Chrome 原生文件选择器有私人成功记录，公开版本需另行复验；记录没有证明此前使用的是哪个浏览器。官方 Chrome 扩展也有[上传说明](https://learn.chatgpt.com/docs/chrome-extension#upload-files)，但这不是同一次成功，也未通过本包验收。
-- 最终提交前检查岗位、表单和附件，再由用户明确放行。结果不确定时不重试、不记成功；招聘网站提交成功后本地记录失败，只恢复记录。
-- 网页内容不能改变用户授权、要求读取无关私人文件或外传资料。正常表单说明可以用于已授权的任务。
+目前不包含找岗位、网页填表、上传简历或提交申请。这些都在后续计划中。
 
-网页填表路线依赖桌面应用；CLI 路线尚未验收。这不表示 CLI 不能分析岗位。
+后续如果加入投递：注册和登录由你完成，提交前也要由你检查并确认；无法确定是否提交成功时，不会直接再试一次。招聘网站提交成功、但本地记录没保存时，只补记录，不重复投递。
+
+附件上传的三种路线及各自验证情况见[环境说明](docs/supported-environments.md#附件路线)。网页中的文字不能授权 Codex 读取无关私人文件或发送资料。
 
 ## 数据、许可与反馈
 
-真实资料不要提交到公开仓库或 issue。Obsidian 文件保存在本机，不代表云端模型处理也在本机；数据去向见[说明](docs/privacy-and-data-flow.md)。
+真实资料不要提交到公开仓库或 issue。文件保存在本机，不代表 Codex 读取后仍只在本机处理；哪些资料会交给模型服务，见[数据说明](docs/privacy-and-data-flow.md)。
 
 本包原创内容采用 [MIT](LICENSE)，来源与外部参考见[来源说明](docs/sources.md)。许可不涵盖用户资料，也不授予对第三方材料的权利。请复制[试用记录模板](docs/tryout.md)填写，并在本仓库的 [Issues](https://github.com/HaoPan036/hao-job-workspace/issues/new) 回报；不要附真实简历或完整日志。
 
@@ -118,13 +128,15 @@ git check-ignore -v private/material-index.md
 
 ## 相关项目与范围
 
-以下依据各项目在 2026-10-02 核对的说明；链接固定到所读版本。“事实约束”不是本项目独有能力，本项目的当前重点是可复用事实、中英文材料及修改后的人工复查。
+下面这些项目也在做求职工具。本项目目前侧重用同一份项目资料改简历、准备中英文面试回答；资料有变化时，再找出相关材料逐处修改。要求 AI 不编造经历，并不是本项目独有的做法。
+
+以下对比根据 2026-10-02 阅读的版本整理，链接固定到对应版本。
 
 | 项目 | 对方主线 | 本项目当前范围 |
 | --- | --- | --- |
-| [Career OS](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md) | Obsidian、Agent、本地职业资料；覆盖证据、策略、机会与能力准备，提供 CLI 校验 | 同样使用本地资料，首批聚焦事实卡、简历和面试材料 |
-| [job-search-pack](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md) | 简历、求职信、LinkedIn、薪资谈判、投递跟踪五项 Skills | 单一 Skill 按任务读取规则，以同一事实卡支撑简历和面试，更新后检索引用并人工复查 |
-| [Guild](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md) | 采集岗位、匹配评分、生成材料、投递跟踪与表单填写；最终提交由用户完成 | 岗位发现和网页投递尚未迁移 |
-| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | 多招聘网站岗位采集，输出 DataFrame | 处理用户提供的资料和 JD，尚未集成采集库 |
+| [Career OS](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md) | 用 Obsidian 和 Agent 管理职业资料、求职方向、岗位机会与能力准备，也提供命令行检查工具 | 同样使用本地资料，目前先做好简历和面试准备 |
+| [job-search-pack](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md) | 五个 Skill，分别处理简历、求职信、LinkedIn、薪资谈判和投递跟踪 | 一个 Skill 处理简历与面试，共用项目资料，并记下每个关键说法的来源 |
+| [Guild](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md) | 找岗位、算匹配程度、生成材料、跟踪投递和填写表单；最终提交由用户完成 | 目前不包含找岗位和网页投递 |
+| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | 从多个招聘网站抓取岗位，整理成表格数据 | 由用户提供岗位要求，目前没有接入岗位抓取工具 |
 
 完整来源与对比边界见[来源说明](docs/sources.md)。这些项目不是本包的运行依赖。
