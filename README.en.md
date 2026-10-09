@@ -177,4 +177,19 @@ After trying it, report through [GitHub Issues](https://github.com/HaoPan036/hao
 
 ## Related projects
 
-AARG, ResumeProof, LLMInternSkill, Career OS, job-search-pack, Guild, JobSpy, and OfferPilot also build job-search tools, and asking an AI not to invent experience is not unique to this project. This package connects job discovery, materials, independently reviewed applications, records, and interview practice in one local workspace. The project-by-project comparison and its evidence are in the [source notes](docs/sources.md#相近项目) (Chinese). None of these projects is a runtime dependency.
+This package connects job discovery, materials, independently reviewed applications, records, and interview practice in one local workspace. Asking an AI not to invent experience is not unique to this project.
+
+The comparisons below translate the Chinese README's review of documentation and selected code on **2026-10-02**. Links are pinned to the versions reviewed. These projects were not installed or run as part of that review; their descriptions are not evidence of measured results.
+
+| Project | Its focus | This package's current scope |
+| --- | --- | --- |
+| [AARG](https://github.com/joseym/aarg/blob/7300fdf8a3c5b0bc2132288d16cc59c382a3ec1d/README.md) | Tailors resumes to job descriptions and generates PDFs; code restricts new numbers and unsupported skills | Uses existing materials for resume text and interview answers; no PDF generation engine |
+| [ResumeProof](https://github.com/caihhhhhh/resume-proof/blob/0213db759582da9addbcf1e142ace92a5d95a0dd/README.md) | Organizes resume edits, text approval, and document delivery checks with a Skill and Python tools | Primarily Markdown and plain text; Word/PDF reading and layout are not validated |
+| [LLMInternSkill](https://github.com/wanyichen06/LLMInternSkill/blob/e57ec94d8810dfeed8dec2c5fc515f0fbaa0a933/README.md) | Resume editing, matching, project evidence review, and interview follow-ups for LLM-related internships | Also uses project evidence; includes reviewing actual answers and practicing one question at a time |
+| [Career OS](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md) | An Obsidian and agent workspace for career materials, direction, opportunities, and preparation, with CLI checks | Also uses local materials; includes independently reviewed submission, result synchronization, and archiving the resume used |
+| [job-search-pack](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md) | Five Skills for resumes, cover letters, LinkedIn, salary negotiation, and application tracking | One entry-point Skill routes requests to the relevant workflow and shares materials and application records |
+| [Guild](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md) | Job discovery, matching, materials, tracking, and form filling, with final submission by the user | After authorization for a specific position, an independent agent reviews the actual form and submits if it passes |
+| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | Collects jobs from multiple sites into tabular data | Host search and official checks, with optional source collection, deduplication, and queue checks; JobSpy is not integrated |
+| [OfferPilot (offercontext/offerPilot)](https://github.com/offercontext/offerPilot/blob/c0a447bbe7be8976fe9a53c2bcbf3b91dad0eeac/README.md) | A local job-search workspace for applications, resumes, and interviews; its README excludes automatic applications and recruiter outreach | Includes instructions for authorized automatic submission after independent review; website compatibility still needs separate validation |
+
+There are several unrelated projects named OfferPilot; this comparison refers only to the linked repository. See the [source notes](docs/sources.md) for details. None of these projects is a runtime dependency of this package.

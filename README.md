@@ -4,7 +4,7 @@
 
 给 Codex 用的求职工作流包：找岗位、核对经历、改简历、经独立审查后投递、记录结果和准备面试。本仓库提供操作规则（Skill）、资料模板、虚构示例和本地工具，需要在 Codex 中使用，本身不是独立运行的 Agent。Obsidian 可选。
 
-[先试一次](#先用示例试一次) · [换成自己的资料](#换成自己的资料) · [可以这样说](#可以直接这样说) · [模拟投递](examples/application/README.md) · [相关项目](#相关项目)
+[先试一次](#先用示例试一次) · [换成自己的资料](#换成自己的资料) · [可以这样说](#可以直接这样说) · [模拟投递](examples/application/README.md) · [相关项目](#相关项目与范围)
 
 > **Alpha，尚未经过陌生用户试用，建议先用虚构资料。** 网页填写和提交需要宿主支持浏览器操作与独立 Agent；本包没有通吃所有招聘网站的自动化程序，真实网站需逐站验证。测过什么、还缺什么，见[环境说明](docs/supported-environments.md)与 [ROADMAP](ROADMAP.md)。
 
@@ -168,6 +168,21 @@ python3 tools/job-radar/funnel.py --root . --json
 
 试用后请按[试用记录模板](docs/tryout.md)在 [Issues](https://github.com/HaoPan036/hao-job-workspace/issues/new) 回报，不要附真实简历或完整日志。尚待验证的项目见[待验证清单](docs/validation-plan.md)；可选的网页定时任务与 GitHub 接入见[实验说明](docs/experimental/chatgpt-github.md)。
 
-## 相关项目
+## 相关项目与范围
 
-AARG、ResumeProof、LLMInternSkill、Career OS、job-search-pack、Guild、JobSpy 和 OfferPilot 等项目也在做求职工具，要求 AI 不编造经历并不是本项目独有的做法。本项目把找岗位、材料、经独立审查的投递、记录和面试练习串在一个本地工作区里。逐项对比和依据见[来源说明](docs/sources.md#相近项目)；这些项目都不是本包的运行依赖。
+下面这些项目也在做求职工具。本项目把找岗位、材料、经独立审查的投递、记录和面试练习串在一个本地工作区里。要求 AI 不编造经历，并不是本项目独有的做法。
+
+以下对比根据 2026-10-02 阅读的文档与相关实现整理，链接固定到对应版本。未安装运行这些项目，不把项目说明当作效果验证。
+
+| 项目 | 对方主线 | 本项目当前范围 |
+| --- | --- | --- |
+| [AARG](https://github.com/joseym/aarg/blob/7300fdf8a3c5b0bc2132288d16cc59c382a3ec1d/README.md) | 按岗位要求定制简历并生成 PDF；代码对新增数字、缺少依据的技能做限制 | 当前用已有资料准备简历文字和面试回答，未提供 PDF 生成引擎 |
+| [ResumeProof](https://github.com/caihhhhhh/resume-proof/blob/0213db759582da9addbcf1e142ace92a5d95a0dd/README.md) | 用 Skill 和 Python 工具组织简历修改、文本审批和文档交付检查 | 当前以 Markdown 和纯文本为主，Word、PDF 读取和排版尚未验证 |
+| [LLMInternSkill](https://github.com/wanyichen06/LLMInternSkill/blob/e57ec94d8810dfeed8dec2c5fc515f0fbaa0a933/README.md) | 面向大模型相关实习，做简历修改、岗位匹配、项目证据审阅和面试追问 | 同样根据项目资料准备材料；公开版还包括回答复盘与逐题练习 |
+| [Career OS](https://github.com/sean2077/career-os/blob/370274792e6259d5b874ec627c5e31140309f03c/README.md) | 用 Obsidian 和 Agent 管理职业资料、求职方向、岗位机会与能力准备，也提供命令行检查工具 | 同样使用本地资料；本包另有独立审查后提交、结果同步和原简历归档流程 |
+| [job-search-pack](https://github.com/nikhilvdev/job-search-pack/blob/d603672432ad67d5b26d1b320044d9cd1a05c980/README.md) | 五个 Skill，分别处理简历、求职信、LinkedIn、薪资谈判和投递跟踪 | 一个 Skill 按请求分步骤处理，共用资料、记录和实际投递版本 |
+| [Guild](https://github.com/arafa-dev/ai-job-application-automation/blob/de8cc9343bd046613b1f4b59e436fb517eb93131/README.md) | 找岗位、算匹配程度、生成材料、跟踪投递和填写表单；最终提交由用户完成 | 用户授权具体岗位后，独立 Agent 审查实际页面，通过后提交 |
+| [JobSpy](https://github.com/speedyapply/JobSpy/blob/10b5417c8f2c99a6159733cf0f52a06c96c3832d/README.md) | 从多个招聘网站抓取岗位，整理成表格数据 | 宿主搜索与官网核验，另有可选来源采集、重复和保存检查；没有接入该抓取库 |
+| [OfferPilot（offercontext/offerPilot）](https://github.com/offercontext/offerPilot/blob/c0a447bbe7be8976fe9a53c2bcbf3b91dad0eeac/README.md) | 本地求职工作台，管理投递记录、简历和面试准备等；README 明确不自动投递或联系招聘方 | 提供具体岗位授权后的自动投递规则；浏览器兼容性仍需逐站验证 |
+
+OfferPilot 有多个同名项目，这里只比较表中明确链接的仓库。完整来源与对比边界见[来源说明](docs/sources.md)。这些项目不是本包的运行依赖。
