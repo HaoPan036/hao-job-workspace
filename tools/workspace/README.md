@@ -12,6 +12,28 @@ python3 tools/workspace/setup.py check
 
 新目录会输出 `INIT_DONE created=17 kept=0`；重复运行为 `created=0 kept=17`。中途失败可查看错误后再次运行，已存在文件继续保留。目标必须是一个 Git 仓库根目录；所有目标文件必须被忽略且未跟踪，不能经符号链接写入其他位置。工具不替用户修改 `.gitignore`。
 
+## 确认 private 被忽略
+
+放入真实资料前，先确认 Git 会忽略 `private/`：
+
+```sh
+git check-ignore -v private/material-index.md
+```
+
+正常会看到下面的结果，行号可能不同：
+
+```text
+.gitignore:2:**/private/    private/material-index.md
+```
+
+没有输出时，先确认终端位于仓库根目录，且根目录 `.gitignore` 包含下面这行（覆盖任意深度的 `private/`），然后重新检查：
+
+```gitignore
+**/private/
+```
+
+仍无匹配时，用 `git ls-files -- private/material-index.md` 查看该文件是否已被跟踪。有输出时，`git rm --cached -- private/material-index.md` 只把它移出 Git 索引、保留本地文件，再重新检查；这不会删除已有提交历史中的内容。忽略检查通过前只用虚构资料。
+
 ## 填写哪些文件
 
 | 位置（相对仓库根目录） | 怎么填写 |
