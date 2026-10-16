@@ -37,6 +37,8 @@
 - 发送英文 README 第 4 步请求：同样调用 Skill，面试稿按要求为英文，未改文件；但说明文字和出处表用了中文，出处表里的 ID 是它临时编的（它自己注明了）。这两点留给试用反馈再决定是否改 Skill。
 - 用 `tools/skill-install/install.py` 装到用户目录后，在仓库外的空目录启动 Claude Code 也能看到该 Skill；随后 `--uninstall` 只移除自己创建的链接。
 
+- `/setup`：在干净克隆里用 `claude -p "/setup <虚构简历>"` 运行，只放行读写文件、初始化脚本和 `git check-ignore`。它建好 17 个模板，把虚构简历拆成 7 张 `unverified` 事实卡（“响应时间降低 40%”“用户超过 2000”标为缺口径、不得进简历），没有推断工作许可和应届资格，最后列出 10 条待确认问题；所有写入都在 `private/`，`git status --short` 无输出。
+
 这是维护者在 Linux 容器里的检查，不是陌生用户验收；macOS 实机、Windows（符号链接需开发者模式或 `core.symlinks`）以及 Claude Code 中的网页填写与独立审查提交都未验证。
 
 ## 本轮流程迁移检查

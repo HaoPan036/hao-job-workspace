@@ -76,6 +76,10 @@ In Obsidian, you can enable the optional `hao-job-workspace` snippet under **App
 
 ## Use your own materials
 
+The quickest route: type `/setup` in Claude Code, optionally followed by a pasted resume, or first **copy** your resume and project notes into `private/inbox/`. In Codex, ask it to "set up my job-search materials". The agent creates the empty workspace, confirms `private/` stays out of Git, turns your materials into a profile and fact cards, and ends with a list of questions for you to confirm. Statements taken from a resume start as unverified; only what you confirm goes into final materials. See the [setup flow](.agents/skills/hao-job-workspace/references/setup.md) (in Chinese).
+
+To do it by hand instead, follow the steps below.
+
 After the example works, create a blank profile, search configuration, and application records. This copies only missing templates, never overwrites, and makes no network requests:
 
 ```sh
